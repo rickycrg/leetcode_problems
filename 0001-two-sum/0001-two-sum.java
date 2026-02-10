@@ -1,21 +1,20 @@
+/**
+implementing in O(n) time complexity, avoiding "double loop"
+O(n) space complexity because of the creation of the map
+*/
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        //get size of the array
-        int size = nums.length;
-        int[] result = new int[2];//result array
-        //"int i" and "int j" to pass through the array and verify each couple of numbers 
-        int i = 0;
-        while (i<size){
-        int j = 0;
-            while (j<size){
-                if (nums[i]+nums[j]==target && i!=j){
-                    result[0]=i;result[1]=j;
-                    return result;
-                }
-                j++;
+        //mapping 2 ints for the final result
+        Map<Integer, Integer> map = new HashMap<>();
+        //iterating trough all elements in the list
+        for (int i=0;i<nums.length;i++){
+            //dont need a second loop, because we alredy know what number we want to find, and there is no need to iterate 2 times
+            int complemento = target - nums[i];
+            if (map.containsKey(complemento)){
+                return new int[] {map.get(complemento), i};
             }
-            i++;
+            map.put(nums[i], i);
         }
-        return result;
+        return new int[] {};
     }
 }
