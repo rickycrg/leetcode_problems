@@ -1,4 +1,6 @@
 class Solution {
+    //O(n) time complexity
+    //O(1) space complexity
     public int removeDuplicates(int[] nums) {
         //avoiding errors
         if (nums.length == 0) return 0;
